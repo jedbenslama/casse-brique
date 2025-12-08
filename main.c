@@ -58,7 +58,7 @@ void initGrille(int grille[50][30]){
     grille[48][15] = 2;
     
 }
-void déplacement_plateforme(int grille[50][30]){
+void deplacement_plateforme(int grille[50][30]){
     int horizontale;
     for (int i =  0; i<50;i++){
         for(int j = 0; j<30;j++){
@@ -89,7 +89,7 @@ int main(){
         clearScreen();
         afficherGrille(grille);
         Sleep(100);
-        déplacement_plateforme(grille);
+        deplacement_plateforme(grille);
     }
     return 0;
 }
