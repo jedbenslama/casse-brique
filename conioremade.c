@@ -3,7 +3,7 @@
     #include <conio.h>
     #include <windows.h>
     void clearScreen(){
-        printf( "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" );
+        printf("\033[H\033[J");
     }
 
 #else
