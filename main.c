@@ -58,9 +58,10 @@ void initGrille(int grille[50][30]){
     grille[48][15] = 2;
     
 }
-void deplacement_balle(int grille[50][30], int statut_balle[1]){
-    int jballe;
+int deplacement_balle(int grille[50][30], int statut_balle[1]){
+    int jballe = -1;
     int iballe;
+    int status = 0;
     for (int i =  0; i<50;i++){
         for(int j = 0; j<30;j++){
             if (grille[i][j] == 2){
@@ -68,6 +69,9 @@ void deplacement_balle(int grille[50][30], int statut_balle[1]){
                 iballe=i;
             }
         }
+    }
+    if(jballe==-1){
+        return 1;
     }
     switch (statut_balle[0]){ // 0 = haut gauche; 1 = haut droite; 2 = bas gauche; 3 = bas droite
     case 0:
@@ -125,7 +129,7 @@ void deplacement_balle(int grille[50][30], int statut_balle[1]){
         }else if(grille[iballe+1][jballe-1]==3){
             statut_balle[0] = 0;
         }else if(iballe>=49){
-            printf("Perdu !\n");
+            grille[iballe][jballe]=0;
         }
         break;
     case 3:
@@ -139,15 +143,16 @@ void deplacement_balle(int grille[50][30], int statut_balle[1]){
         }else if(grille[iballe+1][jballe+1]==3){
             statut_balle[0] = 1;
         }else if(iballe>=49){
-            printf("Perdu !\n");
+            grille[iballe][jballe]=0;
         }
         break;
     default:
         break;
     }
+    return status;
 }
 
-void deplacement_plateforme(int grille[50][30]){
+int deplacement_plateforme(int grille[50][30]){
     int horizontale;
     for (int i =  0; i<50;i++){
         for(int j = 0; j<30;j++){
@@ -168,7 +173,10 @@ void deplacement_plateforme(int grille[50][30]){
             grille[49][horizontale+3]=3;
             grille[49][horizontale]=0;
         }
+    }else if (input=='s'){
+        return 1;
     }
+    return 0;
 }
 int main(){
     int grille[50][30];
@@ -178,9 +186,14 @@ int main(){
     while(1){
         clearScreen();
         afficherGrille(grille);
-        Sleep(100); // 800 par defaut
-        deplacement_plateforme(grille);
-        deplacement_balle(grille, statut_balle);
+        Sleep(20); // 800 par defaut
+        if(deplacement_plateforme(grille) == 1){
+            break;
+        }
+        if(deplacement_balle(grille, statut_balle) == 1){
+            printf("Perdu !\n");
+            break;
+        };
     }
     return 0;
 }
