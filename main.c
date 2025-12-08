@@ -35,6 +35,17 @@ void initGrille(int grille[50][30]){
             grille[i][j]=0; // on met le vide partout
         }
     }
+    for (int i = 0; i < 5; i++){
+        if(i%2){ // si impair
+            for (int j = 0; j < 30; j++){
+                grille[i][j]=1;
+            }
+        }
+    }
+    grille[50][14] = 3;
+    grille[50][15] = 3;
+    grille[50][16] = 3;
+    grille[49][16] = 2;
     
 }
 
