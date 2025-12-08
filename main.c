@@ -2,6 +2,12 @@
 #include <time.h>
 #include "conioremade.c"
 
+char lireCommandeNonBloquante() {
+    if (_kbhit()) {
+        return (char)_getch();
+    }
+    return 0;
+}
 
 void afficherGrille(int grille[50][30]){
     printf("--------------------------------\n");
@@ -62,21 +68,28 @@ void déplacement_plateforme(int grille[50][30]){
             }
         }
     }
-    if (_kbhit()=='q'){
+    char input = lireCommandeNonBloquante();
+    if (input=='q' || input=='a'){
         if (horizontale>=1){
             grille[49][horizontale+2]=0;
             grille[49][horizontale-1]=3;
+        }
+    }else if (input=='d'){
+        if (horizontale<=28){
+            grille[49][horizontale+3]=3;
+            grille[49][horizontale]=0;
         }
     }
 }
 int main(){
     int grille[50][30];
+    initGrille(grille);
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
     while(1){
         clearScreen();
-        initGrille(grille);
         afficherGrille(grille);
-        Sleep(1000);
+        Sleep(100);
+        déplacement_plateforme(grille);
     }
     return 0;
 }
