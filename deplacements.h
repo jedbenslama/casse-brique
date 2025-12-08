@@ -21,12 +21,12 @@ char lireCommandeNonBloquante(int nombreinput[3]) {
     return 0;
 }
 
-int deplacement_balle(int grille[50][30], int statut_balle[1], int donnees_joueur[10]){
+int deplacement_balle(int grille[500][500], int statut_balle[1], int donnees_joueur[10], int vsize, int hsize){
     int jballe = -1;
     int iballe;
     int status = 0;
-    for (int i =  0; i<50;i++){
-        for(int j = 0; j<30;j++){
+    for (int i =  0; i<vsize;i++){
+        for(int j = 0; j<hsize;j++){
             if (grille[i][j] == 2){
                 jballe=j;
                 iballe=i;
@@ -61,11 +61,11 @@ int deplacement_balle(int grille[50][30], int statut_balle[1], int donnees_joueu
         }
         break;
     case 1:
-        if(jballe==29 && iballe!=0){
+        if(jballe==hsize-1 && iballe!=0){
             statut_balle[0]=0;
             break;
         }
-        if(jballe==29 && iballe==0){
+        if(jballe==hsize-1 && iballe==0){
             statut_balle[0]=2;
             break;
         }
@@ -101,12 +101,12 @@ int deplacement_balle(int grille[50][30], int statut_balle[1], int donnees_joueu
                 grille[iballe][jballe]=0;
                 grille[iballe][jballe-1]=2;
             }
-        }else if(iballe>=49){
+        }else if(iballe>=vsize-1){
             grille[iballe][jballe]=0;
         }
         break;
     case 3:
-        if(jballe==29){
+        if(jballe==hsize-1){
             statut_balle[0]=2;
             break;
         }
@@ -123,7 +123,7 @@ int deplacement_balle(int grille[50][30], int statut_balle[1], int donnees_joueu
                 grille[iballe][jballe]=0;
                 grille[iballe][jballe+1]=2;
             }
-        }else if(iballe>=49){
+        }else if(iballe>=vsize-1){
             grille[iballe][jballe]=0;
         }
         break;
@@ -133,10 +133,10 @@ int deplacement_balle(int grille[50][30], int statut_balle[1], int donnees_joueu
     return status;
 }
 
-int deplacement_plateforme(int grille[50][30]){
+int deplacement_plateforme(int grille[500][500], int vsize, int hsize){
     int horizontale;
-    for (int i =  0; i<50;i++){
-        for(int j = 0; j<30;j++){
+    for (int i =  0; i<vsize;i++){
+        for(int j = 0; j<hsize;j++){
             if (grille[i][j] == 3){
                 horizontale=j;
                 break;
@@ -148,16 +148,16 @@ int deplacement_plateforme(int grille[50][30]){
     if (input=='A' || input=='Q' || input=='q' || input=='a'){
         for (int i = 0; i < nombreinput[0]; i++){
             if (horizontale>=1){
-                grille[49][horizontale+2]=0;
-                grille[49][horizontale-1]=3;
+                grille[vsize-1][horizontale+2]=0;
+                grille[vsize-1][horizontale-1]=3;
                 horizontale-=1;
             }
         }
     }else if (input=='d' || input=='D'){
         for (int i = 0; i < nombreinput[0]; i++){
             if (horizontale<=26){
-                grille[49][horizontale+3]=3;
-                grille[49][horizontale]=0;
+                grille[vsize-1][horizontale+3]=3;
+                grille[vsize-1][horizontale]=0;
                 horizontale+=1;
             }
         }

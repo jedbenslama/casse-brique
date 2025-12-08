@@ -19,8 +19,11 @@ int main(){
     
     initConsole();
 
-    int grille[50][30];
-    initGrille(grille);
+    int vsize = 20;
+    int hsize = 40;
+
+    int grille[500][500];
+    initGrille(grille, vsize, hsize);
     int statut_balle[1] = {1}; // 0 = haut gauche; 1 = haut droite; 2 = bas gauche; 3 = bas droite
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
     int donnees_joueur[10];
@@ -33,17 +36,17 @@ int main(){
             temps_debut = time(NULL);
         }
         clearScreen();
-        afficherGrille(grille);
+        afficherGrille(grille, vsize, hsize);
         printf("Score: %d\nNiveau actuel: %d\n", donnees_joueur[0], donnees_joueur[1]);
         Sleep(100 / donnees_joueur[1]); // la vitesse augmente selon le niveau de difficulté
-        if(deplacement_plateforme(grille) == 1){
+        if(deplacement_plateforme(grille, vsize, hsize) == 1){
             saveScore(donnees_joueur);
             break;
         }
-        if(deplacement_balle(grille, statut_balle, donnees_joueur) == 1){
+        if(deplacement_balle(grille, statut_balle, donnees_joueur, vsize, hsize) == 1){
             // on reclear et re affiche la grille pour eviter la pollution visuelle
             clearScreen();
-            afficherGrille(grille);
+            afficherGrille(grille, vsize, hsize);
             printf("Score: %d\nNiveau actuel: %d\nPerdu !\n", donnees_joueur[0], donnees_joueur[1]);
             break;
         };
