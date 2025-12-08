@@ -56,6 +56,8 @@ void initGrille(int grille[50][30]){
     grille[49][15] = 3;
     grille[49][16] = 3;
     grille[48][15] = 2;
+
+    grille[5][0] = 0; // pour test
     
 }
 int deplacement_balle(int grille[50][30], int statut_balle[1]){
@@ -128,6 +130,13 @@ int deplacement_balle(int grille[50][30], int statut_balle[1]){
             grille[iballe+1][jballe-1]=2;
         }else if(grille[iballe+1][jballe-1]==3){
             statut_balle[0] = 0;
+        }else if(grille[iballe+1][jballe-1]==1){
+            grille[iballe+1][jballe-1]=0;
+            statut_balle[0] = 0;
+            if(jballe>=1){
+                grille[iballe][jballe]=0;
+                grille[iballe][jballe-1]=2;
+            }
         }else if(iballe>=49){
             grille[iballe][jballe]=0;
         }
@@ -142,6 +151,13 @@ int deplacement_balle(int grille[50][30], int statut_balle[1]){
             grille[iballe+1][jballe+1]=2;
         }else if(grille[iballe+1][jballe+1]==3){
             statut_balle[0] = 1;
+        }else if(grille[iballe+1][jballe+1]==1){
+            grille[iballe+1][jballe+1]=0;
+            statut_balle[0] = 1;
+            if(jballe<=28){
+                grille[iballe][jballe]=0;
+                grille[iballe][jballe+1]=2;
+            }
         }else if(iballe>=49){
             grille[iballe][jballe]=0;
         }
@@ -186,7 +202,7 @@ int main(){
     while(1){
         clearScreen();
         afficherGrille(grille);
-        Sleep(20); // 800 par defaut
+        Sleep(100); // 800 par defaut
         if(deplacement_plateforme(grille) == 1){
             break;
         }
