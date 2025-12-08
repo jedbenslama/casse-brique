@@ -3,7 +3,14 @@
     #include <conio.h>
     #include <windows.h>
     void clearScreen(){
-        printf("\033[H\033[J");
+        HANDLE hOut;
+        COORD Position;
+
+        hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        Position.X = 0;
+        Position.Y = 0;
+        SetConsoleCursorPosition(hOut, Position);
     }
 
 #else
