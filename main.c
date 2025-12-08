@@ -4,9 +4,11 @@
 
 
 void afficherGrille(int grille[50][30]){
+    printf("--------------------------------\n");
     for (int i = 0; i < 50; i++){
+        printf("|");
         for (int j = 0; j < 30; j++){
-            switch (j){
+            switch (grille[i][j]){
             case 0:
                 printf(" ");
                 break;
@@ -25,8 +27,10 @@ void afficherGrille(int grille[50][30]){
                 break;
             }
         }
+        printf("|");
         printf("\n");
     }
+    printf("--------------------------------\n");
 }
 
 void initGrille(int grille[50][30]){
@@ -42,10 +46,10 @@ void initGrille(int grille[50][30]){
             }
         }
     }
-    grille[50][14] = 3;
-    grille[50][15] = 3;
-    grille[50][16] = 3;
-    grille[49][16] = 2;
+    grille[49][14] = 3;
+    grille[49][15] = 3;
+    grille[49][16] = 3;
+    grille[48][15] = 2;
     
 }
 
@@ -53,7 +57,8 @@ int main(){
     int grille[50][30];
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
     clearScreen();
-
+    initGrille(grille);
+    afficherGrille(grille);
 
     return 0;
 }
