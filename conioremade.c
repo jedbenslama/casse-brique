@@ -3,9 +3,7 @@
     #include <conio.h>
     #include <windows.h>
     void clearScreen(){
-        int n;
-        for (n = 0; n < 10; n++)
-          printf( "\n\n\n\n\n\n\n\n\n\n" );
+        printf( "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" );
     }
 
 #else
