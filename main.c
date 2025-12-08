@@ -15,7 +15,7 @@ char lireCommandeNonBloquante(int nombreinput[3]) {
         if(to_be_returned == last_input){
             nombreinput[0]+=1;
         }
-        last_input = to_be_returned;
+        last_input = to_be_returned; // en gros c'est pour calculer le nombre d'inputs kbhit par tick pour ne pas avoir d'inputs en surplus qui risquent d'etre gardés pour la boucle d'apres
     }
     if(kb_is_hit){
         return to_be_returned;
@@ -223,7 +223,7 @@ int main(){
     while(1){
         clearScreen();
         afficherGrille(grille);
-        Sleep(500); // 800 par defaut
+        Sleep(100); // 800 par defaut
         if(deplacement_plateforme(grille) == 1){
             break;
         }
