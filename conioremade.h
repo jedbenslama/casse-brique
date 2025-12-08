@@ -5,12 +5,21 @@
     void clearScreen(){
         system("cls");
     }
+    void initConsole(){
+        #include <locale.h>
+        // A METTRE DANS LE MAIN :
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+        setlocale(LC_ALL, ".UTF-8"); 
+    }
 #else
     #include <termios.h>
     #include <fcntl.h>
     #include <stdio.h>
     #include <unistd.h>
-    
+    void initConsole(){
+        // rien c deja pret
+    }
     void Sleep(int amount){
         usleep(amount*1000);
     }

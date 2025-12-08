@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <time.h>
-#include "conioremade.c"
+#include "conioremade.h"
 #include <string.h>
 
 char lireCommandeNonBloquante(int nombreinput[3]) {
@@ -232,6 +232,9 @@ void saveScore(int donnees_joueur[10]){
 }
 
 int main(){
+    
+    initConsole();
+
     int grille[50][30];
     initGrille(grille);
     int statut_balle[1] = {1}; // 0 = haut gauche; 1 = haut droite; 2 = bas gauche; 3 = bas droite
