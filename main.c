@@ -75,7 +75,7 @@ void déplacement_plateforme(int grille[50][30]){
             grille[49][horizontale-1]=3;
         }
     }else if (input=='d'){
-        if (horizontale<=28){
+        if (horizontale<=26){
             grille[49][horizontale+3]=3;
             grille[49][horizontale]=0;
         }
