@@ -29,6 +29,15 @@ void afficherGrille(int grille[50][30]){
     }
 }
 
+void initGrille(int grille[50][30]){
+    for (int i = 0; i < 50; i++){
+        for (int j = 0; j < 30; j++){
+            grille[i][j]=0; // on met le vide partout
+        }
+    }
+    
+}
+
 int main(){
     int grille[50][30];
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
