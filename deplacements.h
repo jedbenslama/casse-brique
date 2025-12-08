@@ -155,7 +155,7 @@ int deplacement_plateforme(int grille[500][500], int vsize, int hsize){
         }
     }else if (input=='d' || input=='D'){
         for (int i = 0; i < nombreinput[0]; i++){
-            if (horizontale<=26){
+            if (horizontale<=hsize-4){
                 grille[vsize-1][horizontale+3]=3;
                 grille[vsize-1][horizontale]=0;
                 horizontale+=1;

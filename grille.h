@@ -1,9 +1,12 @@
 #include <stdio.h>
 
 void afficherGrille(int grille[500][500], int vsize, int hsize){
-    printf("--------------------------------------------------------------\n");
+    for (int k = 0; k < hsize+2; k++){
+        printf("🟥");
+    }
+    printf("\n");
     for (int i = 0; i < vsize; i++){
-        printf("|");
+        printf("🟥");
         for (int j = 0; j < hsize; j++){
             switch (grille[i][j]){
             case 0:
@@ -23,20 +26,23 @@ void afficherGrille(int grille[500][500], int vsize, int hsize){
                 break;
             }
         }
-        printf("|");
+        printf("🟥");
         printf("\n");
     }
-    printf("--------------------------------------------------------------\n");
+    for (int k = 0; k < hsize+2; k++){
+        printf("🟥");
+    }
+    printf("\n");
 }
 
-void initGrille(int grille[500][500], int vsize, int hsize){
+void initGrille(int grille[500][500], int vsize, int hsize, int lignes_briques, int steps_briques, int debut_briques){
     for (int i = 0; i < vsize; i++){
         for (int j = 0; j < hsize; j++){
             grille[i][j]=0; // on met le vide partout
         }
     }
-    for (int i = 0; i < 6; i++){
-        if(i%2){ // si impair
+    for (int i = debut_briques; i < lignes_briques; i++){
+        if((i-debut_briques)%steps_briques==0){ // si impair
             for (int j = 0; j < hsize; j++){
                 grille[i][j]=1;
             }

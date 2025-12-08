@@ -22,8 +22,13 @@ int main(){
     int vsize = 20;
     int hsize = 40;
 
+    int debut_briques = 2;
+    int steps_briques = 2;
+    int lignes_briques = 6;
+
     int grille[500][500];
-    initGrille(grille, vsize, hsize);
+
+    initGrille(grille, vsize, hsize, lignes_briques, steps_briques, debut_briques);
     int statut_balle[1] = {1}; // 0 = haut gauche; 1 = haut droite; 2 = bas gauche; 3 = bas droite
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
     int donnees_joueur[10];
