@@ -1,0 +1,11 @@
+Projet:
+- Jeu de casse brique sur terminal
+
+Objectifs:
+- Gerer l'affichage, le deplacement, les rebonds, et le cassage des briques.
+- Utilisation de plusieurs fichiers
+- Le tout en C et avec les librairies vues en cours
+
+Organisation:
+- Repo git en commun
+- Brainstorm ensemble
