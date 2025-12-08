@@ -2,9 +2,23 @@
 #include <time.h>
 #include "conioremade.c"
 
-char lireCommandeNonBloquante() {
-    if (_kbhit()) {
-        return (char)_getch();
+char lireCommandeNonBloquante(int nombreinput[3]) {
+    int kb_is_hit=0;
+    char to_be_returned;
+    char last_input;
+    while(_kbhit()){
+        kb_is_hit=1;
+        if(nombreinput[0]==0){
+            nombreinput[0]=1;
+        }
+        to_be_returned = (char)_getch();
+        if(to_be_returned == last_input){
+            nombreinput[0]+=1;
+        }
+        last_input = to_be_returned;
+    }
+    if(kb_is_hit){
+        return to_be_returned;
     }
     return 0;
 }
@@ -178,16 +192,23 @@ int deplacement_plateforme(int grille[50][30]){
             }
         }
     }
-    char input = lireCommandeNonBloquante();
+    int nombreinput[2] = {0};
+    char input = lireCommandeNonBloquante(nombreinput);
     if (input=='q' || input=='a'){
-        if (horizontale>=1){
-            grille[49][horizontale+2]=0;
-            grille[49][horizontale-1]=3;
+        for (int i = 0; i < nombreinput[0]; i++){
+            if (horizontale>=1){
+                grille[49][horizontale+2]=0;
+                grille[49][horizontale-1]=3;
+                horizontale-=1;
+            }
         }
     }else if (input=='d'){
-        if (horizontale<=26){
-            grille[49][horizontale+3]=3;
-            grille[49][horizontale]=0;
+        for (int i = 0; i < nombreinput[0]; i++){
+            if (horizontale<=26){
+                grille[49][horizontale+3]=3;
+                grille[49][horizontale]=0;
+                horizontale+=1;
+            }
         }
     }else if (input=='s'){
         return 1;
@@ -202,7 +223,7 @@ int main(){
     while(1){
         clearScreen();
         afficherGrille(grille);
-        Sleep(100); // 800 par defaut
+        Sleep(500); // 800 par defaut
         if(deplacement_plateforme(grille) == 1){
             break;
         }
