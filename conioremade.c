@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #ifdef _WIN32
     #include <conio.h>
+    #include <windows.h>
     void clearScreen(){
         system("cls");
     }
@@ -9,6 +10,11 @@
     #include <fcntl.h>
     #include <stdio.h>
     #include <unistd.h>
+    
+    void Sleep(int amount){
+        usleep(amount*1000);
+    }
+
     void clearScreen(){
         system("clear");
     }

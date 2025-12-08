@@ -56,9 +56,11 @@ void initGrille(int grille[50][30]){
 int main(){
     int grille[50][30];
     // 0 = vide; 1 = brique; 2 = balle; 3 = plateforme
-    clearScreen();
-    initGrille(grille);
-    afficherGrille(grille);
-
+    while(1){
+        clearScreen();
+        initGrille(grille);
+        afficherGrille(grille);
+        Sleep(1000);
+    }
     return 0;
 }
