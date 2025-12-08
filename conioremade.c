@@ -3,14 +3,9 @@
     #include <conio.h>
     #include <windows.h>
     void clearScreen(){
-        HANDLE hOut;
-        COORD Position;
-
-        hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-
-        Position.X = 0;
-        Position.Y = 0;
-        SetConsoleCursorPosition(hOut, Position);
+        int n;
+        for (n = 0; n < 10; n++)
+          printf( "\n\n\n\n\n\n\n\n\n\n" );
     }
 
 #else
