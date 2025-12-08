@@ -53,6 +53,8 @@ int main(){
             clearScreen();
             afficherGrille(grille, vsize, hsize);
             printf("Score: %d\nNiveau actuel: %d\nPerdu !\n", donnees_joueur[0], donnees_joueur[1]);
+            Sleep(1000);
+            saveScore(donnees_joueur);
             break;
         };
     }
