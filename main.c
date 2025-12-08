@@ -19,8 +19,8 @@ int main(){
     
     initConsole();
 
-    int vsize = 20;
-    int hsize = 40;
+    int vsize = 13;
+    int hsize = 20;
 
     int debut_briques = 2;
     int steps_briques = 2;
