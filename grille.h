@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// !!!! ce ne sont pas de vrais fichiers headers !!!!!
+
 void afficherGrille(int grille[500][500], int vsize, int hsize){
     for (int k = 0; k < hsize+2; k++){
         printf("🟥");
